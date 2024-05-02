@@ -20,7 +20,7 @@ Presto currently supports different datasources through connectors for each type
 
 ## Proposed Implementation
 
-A template for Flight connector will be created as `presto-base-arrow-flight` module. Since each implementation of flight server will be different, this base module can be extended to create a flight connector that supports a particular implementation.
+A template for Flight connector will be created as `presto-base-arrow-flight` module. Since each implementation of flight server will be different, this base module can be extended to create a flight connector that supports a particular implementation. The template will support only read operations.
 
 ### High level design
 
