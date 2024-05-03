@@ -14,9 +14,9 @@ Create a base Arrow Flight module in Presto which can be extended to create an A
 
 ## Background
 
-Apache Arrow Flight is a new general-purpose client-server framework that simplifies high performance transport of large datasets over network interfaces.
+Apache Arrow Flight is a new general-purpose client-server framework that simplifies high performance transport of large datasets over network interfaces. https://arrow.apache.org/blog/2019/10/13/introducing-arrow-flight/
 
-Presto currently supports different datasources through connectors for each type of datasource. The connectors could be using JDBC or some other protocol for datasource connection. If we use Flight client to connect to the different datasources we can improve the performance of the datasource connection. Also we would only need to develop one Flight client that can be used across different datasources instead of developing individual connectors for each type of datasource.
+Presto currently supports different datasources through connectors for each type of datasource. The connectors can use JDBC or some other protocol for datasource connection. If we use Flight client to connect to the different datasources we can improve the performance of the datasource connection. Also we would only need to develop one Flight client that can be used across different datasources instead of developing individual connectors for each type of datasource.
 
 ## Proposed Implementation
 
@@ -28,7 +28,7 @@ A template for Flight connector will be created as `presto-base-arrow-flight` mo
 
 ![Design diagram](arrow-flight-connector/Presto-flight-client.drawio.png)
 
-The Arrow Flight libraries provide a development framework for implementing a service that can discover metadata and send and receive data streams. Flight APIs are used to retrieve the data from the corresponding table selected. The steps below need to be followed. 
+The Arrow Flight libraries provide a development framework for implementing a service that can discover metadata and send and receive data streams. Flight APIs are used to retrieve the data from the selected table. The steps below need to be followed. 
 
 1. Create a Flight Client using the host, port, ssl information of the Flight service where the route is opened. 
 2. Use the Flight Client to authenticate to the Flight service. 
@@ -68,3 +68,5 @@ Whoever needs to implement a Flight connector for their particular implementatio
 ## Test Plan
 
 Unit tests can test the `presto-base-arrow-flight` module by mocking objects wherever necessary instead of using an actual implementation of Flight server. A POC has already been developed by creating `presto-base-arrow-flight` module and a child module that targets the IBM flavor of the Flight server.
+
+
