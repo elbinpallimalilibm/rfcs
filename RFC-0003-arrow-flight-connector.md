@@ -40,6 +40,9 @@ The Arrow Flight libraries provide a development framework for implementing a se
 6. Use each endpoint to obtain a Ticket. 
 7. Use the Ticket to obtain a Stream. 
 8. Use the Stream to read data. 
+    1. Get VectorSchemaRoot from Flight stream
+    2. For each column in the result, build a Block from the FieldVector
+    3. Return a page with all the constructed Blocks.
 
 #### Query execution using flight
 
