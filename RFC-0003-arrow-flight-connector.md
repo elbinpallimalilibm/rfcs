@@ -76,6 +76,8 @@ Whoever needs to implement a Flight connector for their particular implementatio
 
 ## Test Plan
 
-Unit tests can test the `presto-base-arrow-flight` module by mocking objects wherever necessary instead of using an actual implementation of Flight server. A POC has already been developed by creating `presto-base-arrow-flight` module and a child module that targets the IBM flavor of the Flight server.
+Unit tests can test the `presto-base-arrow-flight` module by testing with a Flight server instance spun up locally. 
+
+A POC has already been developed by creating `presto-base-arrow-flight` module and a child module that targets the IBM flavor of the Flight server. The IBM Flight server can be used to test the base connector template.
 
 
