@@ -54,7 +54,9 @@ The Arrow Flight libraries provide a development framework for implementing a se
 
 #### Connector splits in Presto for FlightInfo tickets
 
-Flight server can serve data using multiple tickets based on the connector type and query. Data can be fetched in parallel using the multiple flight tickets. Presto can create connector splits for each Flight Info ticket so that data can be fetched in parallel by different worker nodes.
+Flight server can serve data using multiple tickets based on the connector type and query. Data can be fetched in parallel using the multiple flight tickets. 
+
+Flight descriptor will be created from a command of byte array. The concrete implementation is responsible for providing the byte array that differs from server to server. Flight Info will be got from the Flight Descriptor. Presto can create connector splits for each ticket from Flight Info so that data can be fetched in parallel by different worker nodes.
 
 ![Connector splits in Presto](arrow-flight-connector/Connector-splits-in-Presto.png)
 
