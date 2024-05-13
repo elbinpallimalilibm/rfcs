@@ -32,9 +32,10 @@ The Arrow Flight libraries provide a development framework for implementing a se
 
 1. Create a Flight Client using the host, port, ssl information of the Flight service where the route is opened. 
 2. Use the Flight Client to authenticate to the Flight service. 
-3. Create a FlightDescriptor using a JSON document containing the description of the connection to read or write. The description consists of: 
-    1. Database name, host, port, username and password 
-    2. Interaction properties including schema and table selected or the select statement 
+3. Create a FlightDescriptor using a command
+    1. The connector template will define an abstract class that returns a byte array.
+    1. The concrete implementation of this connector template will define a class that returns a byte array for the `FlightDescriptor.command` method. 
+    2. The concrete implementation will specify the necessary details for the database connection in the `command` byte array.
 4. Use the FlightDescriptor to obtain a FlightInfo object. 
 5. Use the FlightInfo object to obtain the list of endpoints we will be retrieving data from. 
 6. Use each endpoint to obtain a Ticket. 
