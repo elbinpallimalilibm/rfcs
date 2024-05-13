@@ -43,6 +43,7 @@ The Arrow Flight libraries provide a development framework for implementing a se
     1. Get VectorSchemaRoot from Flight stream
     2. For each column in the result, build a Block from the FieldVector
     3. Return a page with all the constructed Blocks.
+    4. Return new pages until all the Flight streams are read.
 
 #### Query execution using flight
 
