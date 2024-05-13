@@ -8,6 +8,8 @@ Proposers
 
 ## [Related Issues]
 
+https://github.com/prestodb/presto/issues/22729
+
 ## Summary
 
 Create a base Arrow Flight module in Presto which can be extended to create an Arrow Flight connector.
