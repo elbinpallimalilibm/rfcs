@@ -30,15 +30,17 @@ A template for Flight connector will be created as `presto-base-arrow-flight` mo
 
 ![Design diagram](arrow-flight-connector/Presto-flight-client.drawio.png)
 
-The Arrow Flight libraries provide a development framework for implementing a service that can discover metadata and send and receive data streams. Flight APIs are used to retrieve the data from the selected table. The steps below need to be followed. 
+The Arrow Flight libraries provide a development framework for implementing a service that can send and receive data streams. Flight APIs are used to retrieve the data from the selected table. The steps below need to be followed. 
 
-1. Create a Flight Client using the host, port, ssl information of the Flight service where the route is opened. 
-2. Use the Flight Client to authenticate to the Flight service. 
+1. Create a Flight Client using the host, port, ssl information of the Flight service. 
+2. Use the Flight Client to connect to the Flight service. 
 3. Create a FlightDescriptor using a command
     1. The connector template will define an abstract class that returns a byte array.
     1. The concrete implementation of this connector template will define a class that returns a byte array for the `FlightDescriptor.command` method. 
     2. The concrete implementation will specify the necessary details for the database connection in the `command` byte array.
-4. Use the FlightDescriptor to obtain a FlightInfo object. 
+4. Use the FlightDescriptor to obtain a FlightInfo object.
+    1. The FlightInfo object will be got from FlightClient by authenticating to the FlightClient using a bearer token.
+    2. The concrete implementation of the connector is responsible for generating or providing the bearer token.
 5. Use the FlightInfo object to obtain the list of endpoints we will be retrieving data from. 
 6. Use each endpoint to obtain a Ticket. 
 7. Use the Ticket to obtain a Stream. 
