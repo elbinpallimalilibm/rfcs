@@ -33,6 +33,9 @@ A template for Flight connector will be created as `presto-base-arrow-flight` mo
 The Arrow Flight libraries provide a development framework for implementing a service that can send and receive data streams. Flight APIs are used to retrieve the data from the selected table. The steps below need to be followed. 
 
 1. Create a Flight Client using the host, port, ssl information of the Flight service. 
+    1. Maintain a connection pool of Flight clients.
+    2. Reuse a Flight client that is already connected to the same location as the new connection.
+    3. Evict connections from the pool using the Least Frequently Used strategy.
 2. Use the Flight Client to connect to the Flight service. 
 3. Create a FlightDescriptor using a command
     1. The connector template will define an abstract class that returns a byte array.
